@@ -65,6 +65,7 @@ public class Node
 		this.parent = parent;
 	}
 	
+	
 	public ArrayList<Node> getChildren()
 	{
 		return children;
