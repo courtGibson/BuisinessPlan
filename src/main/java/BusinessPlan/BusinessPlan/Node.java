@@ -21,13 +21,18 @@ public class Node
 	 * @param parent
 	 * @param children
 	 */
-	public Node(String name, String data, Node parent/*, Node[] children*/)
+	public Node(String name, String data, Node parent)
 	{
 		this.name = name;
 		this.data = data;
 		this.parent = parent;
-		this.children = children;
-		/*this.children = children;*/
+		//this.children = children;
+	}
+	
+	public Node(Node parent, String name)
+	{
+		this.name = name;
+		this.parent = parent;
 	}
 	
 	public Node()
@@ -81,7 +86,5 @@ public class Node
 		this.children.remove(child);
 	}
 	
-	
-	
-	
+
 }
