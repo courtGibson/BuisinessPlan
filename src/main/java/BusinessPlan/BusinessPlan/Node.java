@@ -21,6 +21,7 @@ public class Node
 	 * @param parent
 	 * @param children
 	 */
+	//constructor 
 	public Node(String name, String data, Node parent)
 	{
 		this.name = name;
@@ -29,17 +30,20 @@ public class Node
 		//this.children = children;
 	}
 	
+	//constructor is data is not known	
 	public Node(Node parent, String name)
 	{
 		this.name = name;
 		this.parent = parent;
 	}
 	
+	//empty constructor for XML
 	public Node()
 	{
 		this("Title", "Description of goals", null);
 	}
 
+	//Getter and setters
 	public String getName()
 	{
 		return name;
@@ -76,11 +80,14 @@ public class Node
 		return children;
 	}
 	
+	//add a child, a node, to another node
 	public void addChild(Node child)
 	{
 		this.children.add(child);
 	}
 	
+	//add a child to a node, string is known -> make new
+	// node for child
 	public Node addChild(String name, Node parent)
 	{
 		Node newNode = new Node(parent, name);
@@ -91,6 +98,7 @@ public class Node
 		return newNode;
 	}
 	
+	//remove child from a node's children list
 	public void removeChild(Node child)
 	{
 		this.children.remove(child);
