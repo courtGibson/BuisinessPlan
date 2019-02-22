@@ -29,6 +29,8 @@ public class VMOSATest
 		assertEquals(false, planV.addNode(root, "Vision"));
 		assertEquals(true, root.children.isEmpty());
 		
+		assertEquals(true, planV.addNode(root, "Objective"));
+		
 		
 		
 		

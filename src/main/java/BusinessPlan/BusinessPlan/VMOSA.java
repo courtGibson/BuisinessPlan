@@ -13,7 +13,7 @@ public class VMOSA extends Plan
 {
 	ArrayList<String> defaultNodes = new ArrayList<String>(); 
 	
-	private void setDefaults()
+	private void setDefaultStrings()
 	{
 		defaultNodes.add("Vision");
 		defaultNodes.add("Mission");
@@ -23,12 +23,26 @@ public class VMOSA extends Plan
 		defaultNodes.add("Assessment");
 	}
 	
+	private void addDefaultNodes(ArrayList<String> defaultNodes)
+	{
+		Node parent = null;
+		
+		for (int i = 0; i<defaultNodes.size(); i++)
+		{
+			Node newNode = parent.addChild(defaultNodes.get(i), parent);
+			parent = newNode;
+		}
+	
+		
+	}
 	
 	
 	public VMOSA()
 	{
+		this.node = node;
 		defaultNodes.clear();
-		setDefaults();
+		setDefaultStrings();
+		addDefaultNodes(defaultNodes);
 	}
 	
 	public boolean addNode(Node parent, String newNodeName)
@@ -42,8 +56,7 @@ public class VMOSA extends Plan
 		{
 			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i > defaultNodes.size(); i++)
 			{
-				Node newNode = new Node(parent, defaultNodes.get(i));
-				parent.addChild(newNode);
+				Node newNode = parent.addChild(defaultNodes.get(i), parent);
 				parent = newNode;
 			}
 			

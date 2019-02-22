@@ -81,6 +81,16 @@ public class Node
 		this.children.add(child);
 	}
 	
+	public Node addChild(String name, Node parent)
+	{
+		Node newNode = new Node(parent, name);
+		if (parent!=null)
+		{
+			parent.addChild(newNode);
+		}
+		return newNode;
+	}
+	
 	public void removeChild(Node child)
 	{
 		this.children.remove(child);
