@@ -15,7 +15,6 @@ public class Node
 	Node parent;
 	ArrayList<Node> children = new ArrayList<Node>();
 	
-	
 	/**
 	 * @param name
 	 * @param data

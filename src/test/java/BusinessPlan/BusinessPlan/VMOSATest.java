@@ -35,7 +35,7 @@ public class VMOSATest
 		//add objective, and following, nodes
 		assertEquals(true, planV.addNode(root, "Objective"));
 		
-		
+
 		
 		
 		

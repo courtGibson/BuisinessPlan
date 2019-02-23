@@ -63,8 +63,7 @@ public class NodeTest
 		//remove child that has children
 		tree.removeChild(n2);
 		assertEquals(false, tree.children.contains(n2));
-		
-		
+				
 		
 	}
 	

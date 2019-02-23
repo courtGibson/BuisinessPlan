@@ -71,7 +71,6 @@ public class VMOSA extends Plan
 			}
 			
 			return true;
-			
 		}
 	}
 }
