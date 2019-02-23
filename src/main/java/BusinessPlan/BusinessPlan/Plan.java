@@ -25,6 +25,7 @@ public abstract class Plan
 	{
 		node.setData(data);
 	}
+	
 }
 
 
