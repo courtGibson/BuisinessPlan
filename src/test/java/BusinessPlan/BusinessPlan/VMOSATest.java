@@ -4,6 +4,7 @@
 package BusinessPlan.BusinessPlan;
 
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -18,22 +19,22 @@ public class VMOSATest
 	public void test()
 	{
 		// make a new VMOSA plan
-		VMOSA planV = new VMOSA();
+		Plan VMOSAPlan = new VMOSA();
 		
 		//print out strings in the list
-		for (int i = 0; i<planV.defaultNodes.size(); i++)
+		for (int i = 0; i<VMOSAPlan.defaultNodes.size(); i++)
 		{
-			System.out.println(planV.defaultNodes.get(i));
+			System.out.println(VMOSAPlan.defaultNodes.get(i));
 		}
 		
 		//make a root node
 		Node root = new Node(null, "Vision");
 		
 		// try to add vision again and check to see that it wasn't added
-		assertEquals(false, planV.addNode(root, "Vision"));
+		assertEquals(false, VMOSAPlan.addNode(root, "Vision"));
 		assertEquals(true, root.children.isEmpty());
 		//add objective, and following, nodes
-		assertEquals(true, planV.addNode(root, "Objective"));
+		assertEquals(true, VMOSAPlan.addNode(root, "Objective"));
 		
 
 		

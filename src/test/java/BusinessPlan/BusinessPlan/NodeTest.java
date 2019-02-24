@@ -20,7 +20,7 @@ public class NodeTest
 		//
 		
 		//make tree node and test data methods
-		Node tree = new Node("TreeNode", "Desciption of mission goals.", null);
+		Node tree = new Node(null, "TreeNode");
 		assertEquals("TreeNode", tree.getName());
 		tree.setName("Tree");
 		assertEquals("Tree", tree.getName());
@@ -32,25 +32,25 @@ public class NodeTest
 		
 		
 		//make child nodes for tree, test addChild and getParent
-		Node n1 = new Node("Vision", "Desciption", tree);
+		Node n1 = new Node(tree, "Vision");
 		tree.addChild(n1);
 		assertEquals(tree, n1.getParent());
 		assertEquals("Vision", n1.getName());
 		assertEquals(true, tree.children.contains(n1));
 		
-		Node n2 = new Node("node", "description", tree);
+		Node n2 = new Node(tree, "node");
 		tree.addChild(n2);
 		assertEquals(true, tree.children.contains(n2));
 		assertEquals(tree, n2.getParent());
 		
 		//add child to n2
-		Node n3 = new Node("node3", "descr", n2);
-		n2.addChild(n3);
+		Node n3 = new Node(n2, "node3");
+		n2.addChild(n3); 
 		assertEquals(true, n2.children.contains(n3));
 		assertEquals(n2, n3.getParent());
 		
 		// add child to n3
-		Node n4 = new Node("node3", "descr", n3);
+		Node n4 = new Node(n3, "node3");
 		n3.addChild(n4);
 		
 		//get grandparent

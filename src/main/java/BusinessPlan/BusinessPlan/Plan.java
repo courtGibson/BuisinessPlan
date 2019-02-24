@@ -12,9 +12,10 @@ import java.util.ArrayList;
 public abstract class Plan
 {
 	Node node;
+	ArrayList<String> defaultNodes = new ArrayList<String>(); 
 	
 	
-	abstract boolean addNode(Node parent, String name);
+	abstract boolean addNode(Node parent);
 	
 	//remove given node from the children list in its parent node
 	public void removeNode(Node node)
