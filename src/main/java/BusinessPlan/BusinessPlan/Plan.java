@@ -3,6 +3,8 @@
  */
 package BusinessPlan.BusinessPlan;
 
+import java.util.ArrayList;
+
 /**
  * @author Courtney
  *
@@ -25,6 +27,8 @@ public abstract class Plan
 	{
 		node.setData(data);
 	}
+	
+	
 }
 
 

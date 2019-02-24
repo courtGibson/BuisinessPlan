@@ -80,6 +80,8 @@ public class Node
 		return children;
 	}
 	
+	//
+	
 	//add a child, a node, to another node
 	public void addChild(Node child)
 	{

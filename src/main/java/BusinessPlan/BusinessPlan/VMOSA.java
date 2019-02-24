@@ -27,28 +27,32 @@ public class VMOSA extends Plan
 	}
 	
 	// make nodes for all of the strings in defaultNodes
-	// Need to figure out how to make a pointer for the 
-	//     first node so we can reference it later
-	private void addDefaultNodes(ArrayList<String> defaultNodes)
+	// Create pointer for tree called root
+	private Node addDefaultNodes(ArrayList<String> defaultNodes)
 	{
 		Node parent = null;
-		
+		Node root = null;
+				
 		for (int i = 0; i<defaultNodes.size(); i++)
 		{
 			Node newNode = parent.addChild(defaultNodes.get(i), parent);
 			parent = newNode;
+				
+			if (i==0)
+			{
+				root = newNode;
+			}
 		}
-	
+		return root;
 		
 	}
 	
 	// constructor??
 	public VMOSA()
 	{
-		this.node = node;
 		defaultNodes.clear();
 		setDefaultStrings();
-		addDefaultNodes(defaultNodes);
+		Node VMOSA = addNode(defaultNodes);
 	}
 	
 	// addNode method from abstract Plan class
