@@ -52,7 +52,7 @@ public class VMOSA extends Plan
 	{
 		defaultNodes.clear();
 		setDefaultStrings();
-		Node VMOSA = addNode(defaultNodes);
+		Node VMOSA = addDefaultNodes(defaultNodes);
 	}
 	
 	// addNode method from abstract Plan class
