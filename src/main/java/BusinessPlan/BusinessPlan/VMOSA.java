@@ -14,7 +14,7 @@ public class VMOSA extends Plan
 	// probably a better way to do this but had a hard time
 	//  getting it to work
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
-	Node root;
+	protected Node root;
 	//set strings for default stages VMOSA plan
 	private void setDefaultStrings()
 	{
@@ -28,22 +28,15 @@ public class VMOSA extends Plan
 	
 	// make nodes for all of the strings in defaultNodes
 	// Create pointer for tree called root
-	private Node addDefaultNodes(ArrayList<String> defaultNodes)
+	private void addDefaultNodes()
 	{
 		Node parent = null;
 		
 		
-		for (int i = 0; i<defaultNodes.size(); i++)
-		{
-			boolean added = addNode(parent, defaultNodes.get(i));
+	
+		boolean added = addNode(parent);
 				
-			if (i==0)
-			{
-				root = newNode;
-			}
-		}
-		return root;
-		
+			
 	}
 	
 	// constructor??
@@ -51,7 +44,7 @@ public class VMOSA extends Plan
 	{
 		defaultNodes.clear();
 		setDefaultStrings();
-		Node VMOSA = addDefaultNodes(defaultNodes);
+		addDefaultNodes();
 	}
 	
 	// addNode method from abstract Plan class
@@ -61,22 +54,37 @@ public class VMOSA extends Plan
 	public boolean addNode(Node parent)
 	{
 		
-		if ((root!=null)
-				||(parent.getName() == "Vision" && parent.children.size()!=0)
-				|| (parent.getName() == "Mission" && parent.children.size()!=0))
+		if ((parent!=null)&&
+				((parent.getName() == "Vision" && parent.children.size()!=0)
+					|| (parent.getName() == "Mission" && parent.children.size()!=0)))
 		{
 			return false;
 		}
-		else if(root==null)
+		else if(parent!=null)
 		{
-			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i > defaultNodes.size(); i++)
-			{
-				Node newNode = Node(parent, defaultNodes.indexOf(i+1));
-				parent.addChild(parent, defaultNodes.get(i));
-				parent = newNode;
-			}
+			addNodes(parent);
 			
 			return true;
+		}
+		else
+		{
+			Node newParent = new Node(null, defaultNodes.get(0));
+			addNodes(newParent);
+		}
+		
+		return false;
+	}
+	
+	private void addNodes(Node parent)
+	{
+		for (int i = (defaultNodes.indexOf(parent.getName()))+1; i > defaultNodes.size(); i++)
+		{
+			
+			Node newNode = new Node(parent, defaultNodes.get(i+1));
+			
+			parent.addChild(parent, newNode);
+			parent = newNode;
+			
 		}
 	}
 }
