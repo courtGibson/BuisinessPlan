@@ -11,7 +11,6 @@ import java.util.ArrayList;
  */
 public abstract class Plan
 {
-	
 	abstract public boolean addNode(Node parent);
 	
 	//remove given node from the children list in its parent node

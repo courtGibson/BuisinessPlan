@@ -13,7 +13,6 @@ import org.junit.Test;
  */
 public class IowaStateTest
 {
-	
 	@Test
 	public void test()
 	{
