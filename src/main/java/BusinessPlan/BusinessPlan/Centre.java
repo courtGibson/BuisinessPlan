@@ -14,8 +14,8 @@ public class Centre
 
 	// probably a better way to do this but had a hard time
 	//  getting it to work
-	ArrayList<String> defaultNodes = new ArrayList<String>(); 
-		
+	protected ArrayList<String> defaultNodes;
+	protected Node root;	
 	//set strings for default stages VMOSA plan
 	private void setDefaultStrings()
 	{

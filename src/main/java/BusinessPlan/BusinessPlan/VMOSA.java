@@ -13,7 +13,7 @@ public class VMOSA extends Plan
 {
 	// probably a better way to do this but had a hard time
 	//  getting it to work
-	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
+	protected ArrayList<String> defaultNodes = new ArrayList<String>(); 
 	protected Node root;
 	//set strings for default stages VMOSA plan
 	private void setDefaultStrings()
@@ -30,11 +30,11 @@ public class VMOSA extends Plan
 	// Create pointer for tree called root
 	private void addDefaultNodes()
 	{
-		Node parent = null;
+		Node root = new Node(null, defaultNodes.get(0));
 		
 		
 	
-		boolean added = addNode(parent);
+		addRoot(root);
 				
 			
 	}
@@ -47,44 +47,63 @@ public class VMOSA extends Plan
 		addDefaultNodes();
 	}
 	
+
+	private void addRoot(Node start)
+	{
+
+		
+		
+		Node newParent = new Node(start, defaultNodes.get(1));
+		start.addChild(newParent);
+		addNode(newParent);
+		
+		
+		
+	}
+	
+	
 	// addNode method from abstract Plan class
 	// if trying to add Vision or Mission and they are already there
-	// it returns false
-	// Otherwise, makes and adds new node, returns true
+	// makes node and sets to parent, uses for loop to iterate through the list of names
 	public boolean addNode(Node parent)
-	{
-		
-		if ((parent!=null)&&
-				((parent.getName() == "Vision" && parent.children.size()!=0)
-					|| (parent.getName() == "Mission" && parent.children.size()!=0)))
+	{	
+		// throw an exception here
+		if (parent.getName() == "Vision" || parent == null)
 		{
+			System.out.println("error wrong");
 			return false;
-		}
-		else if(parent!=null)
-		{
-			addNodes(parent);
-			
-			return true;
 		}
 		else
 		{
-			Node newParent = new Node(null, defaultNodes.get(0));
-			addNodes(newParent);
+		// check math
+			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i > defaultNodes.size(); i++)
+			{
+			
+				Node newNode = new Node(parent, defaultNodes.get(i));
+			
+				parent.addChild(newNode);
+				parent = newNode;
+			
+			}
+			return true;
 		}
-		
-		return false;
 	}
 	
-	private void addNodes(Node parent)
+	public boolean removeNode(Node x)
 	{
-		for (int i = (defaultNodes.indexOf(parent.getName()))+1; i > defaultNodes.size(); i++)
+		if (x.getName() == root.getName() || x.getName() == defaultNodes.get(1))
 		{
-			
-			Node newNode = new Node(parent, defaultNodes.get(i+1));
-			
-			parent.addChild(parent, newNode);
-			parent = newNode;
-			
+		
+			System.out.println("error");
+			return false;
+		
+	    }
+		else
+		{
+			x.parent.removeChild(x);
+			x.setParent(null);
+			return true;
+
 		}
 	}
 }
