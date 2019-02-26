@@ -88,16 +88,6 @@ public class Node
 		this.children.add(child);
 	}
 	
-	//add a child to a node, string is known -> make new
-	// node for child
-	public void addChild(Node parent, Node newNode)
-	{
-		
-		if (parent!=null)
-		{
-			parent.addChild(newNode);
-		}
-	}
 	
 	//remove child from a node's children list
 	public void removeChild(Node child)
