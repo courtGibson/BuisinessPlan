@@ -9,23 +9,26 @@ import java.util.ArrayList;
  * @author Courtney and Jack
  *
  */
-public class Centre extends Plan
+public class IowaState extends Plan
 {
-
 	// probably a better way to do this but had a hard time
-		//  getting it to work
-		public ArrayList<String> defaultNodes = new ArrayList<String>(); 
-		public Node root;
-		//set strings for default stages VMOSA plan
+	//  getting it to work
+	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
+	public Node root;
+	//set strings for default stages VMOSA plan
 	private void setDefaultStrings()
 	{
+		defaultNodes.add("Vision");
 		defaultNodes.add("Mission");
+		defaultNodes.add("Core Value");
+		defaultNodes.add("Strategy");
 		defaultNodes.add("Goal");
-		defaultNodes.add("Learning Objective");
-		defaultNodes.add("Assement Process");
-		defaultNodes.add("Results");
+		defaultNodes.add("Objective");
+		defaultNodes.add("Action Plan");
+		defaultNodes.add("Assessment");
 	}
 	
+
 	// make nodes for all of the strings in defaultNodes
 	// Create pointer for tree called root
 	private void addDefaultNodes()
@@ -38,7 +41,7 @@ public class Centre extends Plan
 	}
 	
 	// constructor??
-	public Centre()
+	public IowaState()
 	{
 		defaultNodes.clear();
 		setDefaultStrings();
@@ -61,12 +64,12 @@ public class Centre extends Plan
 	
 	
 	// addNode method from abstract Plan class
-	// if trying to add Mission and they are already there
+	// if trying to add Vision or Mission and they are already there
 	// makes node and sets to parent, uses for loop to iterate through the list of names
 	public boolean addNode(Node parent)
 	{	
 		// throw an exception here
-		if (parent == null)
+		if (parent.getName() == "Vision" || parent.getName() == "Mission" || parent == null)
 		{
 			System.out.println("error wrong");
 			return false;
@@ -89,7 +92,7 @@ public class Centre extends Plan
 	
 	public boolean removeNode(Node nodeRemove)
 	{
-		if ((nodeRemove.getName() == root.getName()) 
+		if (nodeRemove.getName() == root.getName()
 				|| nodeRemove.getParent().children.size()==1)
 		{
 		

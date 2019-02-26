@@ -4,7 +4,6 @@
 package BusinessPlan.BusinessPlan;
 
 import static org.junit.Assert.*;
-import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -12,38 +11,38 @@ import org.junit.Test;
  * @author Courtney and Jack
  *
  */
-public class VMOSATest
+public class IowaStateTest
 {
 
 	@Test
 	public void test()
 	{
 		// make a new VMOSA plan
-		Plan VMOSAPlan = new VMOSA();
+		Plan IowaStatePlan = new VMOSA();
 		
 		//print out strings in the list
-		for (int i = 0; i<VMOSAPlan.getList().size(); i++)
+		for (int i = 0; i<IowaStatePlan.getList().size(); i++)
 		{
-			System.out.println(VMOSAPlan.getList().get(i));
+			System.out.println(IowaStatePlan.getList().get(i));
 		}
 		
 		//get root node
-		Node rootNode = VMOSAPlan.getRoot();
+		Node rootNode = IowaStatePlan.getRoot();
 		// try to add vision again and check to see that it wasn't added
-		assertEquals(false, VMOSAPlan.addNode(rootNode));
+		assertEquals(false, IowaStatePlan.addNode(rootNode));
 		assertEquals(false, rootNode.children.isEmpty());
 		//add objective, and following, nodes
 		Node missionNode = rootNode.children.get(0);
 		//System.out.println(missionNode.children);
-		assertEquals(true, VMOSAPlan.addNode(missionNode));
+		assertEquals(true, IowaStatePlan.addNode(missionNode));
 		assertEquals(2, missionNode.children.size());
 		
-		assertEquals(false, VMOSAPlan.removeNode(rootNode));
-		assertEquals(false, VMOSAPlan.removeNode(missionNode));
+		assertEquals(false, IowaStatePlan.removeNode(rootNode));
+		assertEquals(false, IowaStatePlan.removeNode(missionNode));
 		
 		Node rm = missionNode.children.get(0);
 		
-		assertEquals(true, VMOSAPlan.removeNode(rm));
+		assertEquals(true, IowaStatePlan.removeNode(rm));
 		assertEquals(1, missionNode.children.size());
 		
 		missionNode.setData("hello");
@@ -51,7 +50,7 @@ public class VMOSATest
 		
 		Node rm2 = missionNode.children.get(0).children.get(0);
 		
-		assertEquals(false, VMOSAPlan.removeNode(rm2));
+		assertEquals(false, IowaStatePlan.removeNode(rm2));
 		
 		
 

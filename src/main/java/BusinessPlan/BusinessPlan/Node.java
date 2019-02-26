@@ -5,14 +5,14 @@
 package BusinessPlan.BusinessPlan;
 import java.util.ArrayList;
 /**
- * @author Courtney
+ * @author Courtney and Jack
  *
  */
 public class Node
 {
+	Node parent;
 	String name;
 	String data;
-	Node parent;
 	ArrayList<Node> children = new ArrayList<Node>();
 	
 	/**
@@ -31,17 +31,18 @@ public class Node
 	}*/
 	
 	//constructor is data is not known	
-	public Node(Node parent, String name)
+	public Node(Node parent, String name, String data, ArrayList<Node> child)
 	{
 		this.name = name;
 		this.parent = parent;
+		this.data = data;
+		
+		
+		
 	}
 	
 	//empty constructor for XML
-	public Node()
-	{
-		this( null, "Title");
-	}
+
 
 	//Getter and setters
 	public String getName()

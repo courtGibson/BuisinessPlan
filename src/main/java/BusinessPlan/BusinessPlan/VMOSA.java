@@ -6,7 +6,7 @@ package BusinessPlan.BusinessPlan;
 import java.util.ArrayList;
 
 /**
- * @author Courtney
+ * @author Courtney and Jack
  *
  */
 public class VMOSA extends Plan
@@ -14,7 +14,7 @@ public class VMOSA extends Plan
 	// probably a better way to do this but had a hard time
 	//  getting it to work
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
-	protected Node root;
+	public Node root;
 	//set strings for default stages VMOSA plan
 	private void setDefaultStrings()
 	{
@@ -26,15 +26,14 @@ public class VMOSA extends Plan
 		defaultNodes.add("Assessment");
 	}
 	
+
 	// make nodes for all of the strings in defaultNodes
 	// Create pointer for tree called root
 	private void addDefaultNodes()
 	{
-		Node parent = null;
-		
-		
-	
-		boolean added = addNode(parent);
+		Node first = new Node(null, defaultNodes.get(0), null, null);
+		root = first;
+		addRoot(root);
 				
 			
 	}
@@ -47,44 +46,74 @@ public class VMOSA extends Plan
 		addDefaultNodes();
 	}
 	
+
+	private void addRoot(Node start)
+	{
+
+		
+		
+		Node newParent = new Node(start, defaultNodes.get(1), null, null);
+		start.addChild(newParent);
+		addNode(newParent);
+		
+		
+		
+	}
+	
+	
 	// addNode method from abstract Plan class
 	// if trying to add Vision or Mission and they are already there
-	// it returns false
-	// Otherwise, makes and adds new node, returns true
+	// makes node and sets to parent, uses for loop to iterate through the list of names
 	public boolean addNode(Node parent)
-	{
-		
-		if ((parent!=null)&&
-				((parent.getName() == "Vision" && parent.children.size()!=0)
-					|| (parent.getName() == "Mission" && parent.children.size()!=0)))
+	{	
+		// throw an exception here
+		if (parent.getName() == "Vision" || parent == null)
 		{
+			System.out.println("error wrong");
 			return false;
-		}
-		else if(parent!=null)
-		{
-			addNodes(parent);
-			
-			return true;
 		}
 		else
 		{
-			Node newParent = new Node(null, defaultNodes.get(0));
-			addNodes(newParent);
+		// check math
+			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i < defaultNodes.size(); i++)
+			{
+			
+				Node newNode = new Node(parent, defaultNodes.get(i), null, null);
+			
+				parent.addChild(newNode);
+				parent = newNode;
+			
+			}
+			return true;
 		}
-		
-		return false;
 	}
 	
-	private void addNodes(Node parent)
+	public boolean removeNode(Node nodeRemove)
 	{
-		for (int i = (defaultNodes.indexOf(parent.getName()))+1; i > defaultNodes.size(); i++)
+		if (nodeRemove.getName() == root.getName()
+				|| nodeRemove.getParent().children.size()==1)
 		{
-			
-			Node newNode = new Node(parent, defaultNodes.get(i+1));
-			
-			parent.addChild(parent, newNode);
-			parent = newNode;
-			
+		
+			System.out.println("error");
+			return false;
+		
+	    }
+		else
+		{
+			nodeRemove.parent.removeChild(nodeRemove);
+			nodeRemove.setParent(null);
+			return true;
+
 		}
+	}
+	
+	public Node getRoot()
+	{
+		return root;
+	}
+	
+	public ArrayList<String> getList()
+	{
+		return defaultNodes;
 	}
 }

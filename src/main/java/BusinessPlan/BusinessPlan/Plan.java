@@ -6,22 +6,21 @@ package BusinessPlan.BusinessPlan;
 import java.util.ArrayList;
 
 /**
- * @author Courtney
+ * @author Courtney and Jack
  *
  */
 public abstract class Plan
 {
-	Node node;
-	ArrayList<String> defaultNodes = new ArrayList<String>(); 
 	
-	
-	abstract boolean addNode(Node parent);
+
+	abstract public boolean addNode(Node parent);
 	
 	//remove given node from the children list in its parent node
-	public void removeNode(Node node)
-	{
-		node.getParent().removeChild(node);
-	}
+	abstract public boolean removeNode(Node x);
+	
+	abstract public Node getRoot();
+	
+	abstract public ArrayList<String> getList();
 	
 	//set data for the given node
 	public void setNodeData(Node node, String data)
@@ -29,11 +28,8 @@ public abstract class Plan
 		node.setData(data);
 	}
 	
+
+	
+	
 	
 }
-
-
-
-
-
-
