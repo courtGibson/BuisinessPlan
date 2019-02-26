@@ -6,17 +6,18 @@ package BusinessPlan.BusinessPlan;
 import java.util.ArrayList;
 
 /**
- * @author Courtney
+ * @author Courtney and Jack
  *
  */
-public class Centre
+public class Centre extends Plan
 {
-
 	// probably a better way to do this but had a hard time
-	//  getting it to work
-	protected ArrayList<String> defaultNodes;
-	protected Node root;	
-	//set strings for default stages VMOSA plan
+
+		//  getting it to work
+		public ArrayList<String> defaultNodes = new ArrayList<String>(); 
+		public Node root;
+		//set strings for default stages VMOSA plan
+
 	private void setDefaultStrings()
 	{
 		defaultNodes.add("Mission");
@@ -28,53 +29,91 @@ public class Centre
 	
 	// make nodes for all of the strings in defaultNodes
 	// Create pointer for tree called root
-	private Node addDefaultNodes(ArrayList<String> defaultNodes)
+	private void addDefaultNodes()
 	{
-		Node parent = null;
-		Node root = null;
+		Node first = new Node(null, defaultNodes.get(0), null, null);
+		root = first;
+		addRoot(root);
 				
-		for (int i = 0; i<defaultNodes.size(); i++)
-		{
-			Node newNode = parent.addChild(defaultNodes.get(i), parent);
-			parent = newNode;
-				
-			if (i==0)
-			{
-				root = newNode;
-			}
-		}
-		return root;
-		
+			
 	}
 	
 	// constructor??
-	
 	public Centre()
 	{
 		defaultNodes.clear();
 		setDefaultStrings();
-		Node Centre = addDefaultNodes(defaultNodes);
+		addDefaultNodes();
 	}
 	
-	// addNode method from abstract Plan class
-	// if trying to add Vision or Mission and they are already there
-	// it returns false
-	// Otherwise, makes and adds new node, returns true
-	public boolean addNode(Node parent, String newNodeName)
+
+	private void addRoot(Node start)
 	{
-		if ((parent.getName() == "Mission" && parent.children.size()!=0))
+
+		
+		
+		Node newParent = new Node(start, defaultNodes.get(1), null, null);
+		start.addChild(newParent);
+		addNode(newParent);
+		
+		
+		
+	}
+	
+	
+	// addNode method from abstract Plan class
+	// if trying to add Mission and they are already there
+	// makes node and sets to parent, uses for loop to iterate through the list of names
+	public boolean addNode(Node parent)
+	{	
+		// throw an exception here
+		if (parent == null)
 		{
+			System.out.println("error wrong");
 			return false;
 		}
 		else
 		{
-			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i > defaultNodes.size(); i++)
+		// check math
+			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i < defaultNodes.size(); i++)
 			{
-				Node newNode = parent.addChild(defaultNodes.get(i), parent);
-				parent = newNode;
-			}
 			
+				Node newNode = new Node(parent, defaultNodes.get(i), null, null);
+			
+				parent.addChild(newNode);
+				parent = newNode;
+			
+			}
 			return true;
 		}
+	}
+	
+	public boolean removeNode(Node nodeRemove)
+	{
+		if ((nodeRemove.getName() == root.getName()) 
+				|| nodeRemove.getParent().children.size()==1)
+		{
+		
+			System.out.println("error");
+			return false;
+		
+	    }
+		else
+		{
+			nodeRemove.parent.removeChild(nodeRemove);
+			nodeRemove.setParent(null);
+			return true;
+
+		}
+	}
+	
+	public Node getRoot()
+	{
+		return root;
+	}
+	
+	public ArrayList<String> getList()
+	{
+		return defaultNodes;
 	}
 }
