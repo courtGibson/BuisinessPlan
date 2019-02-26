@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public abstract class Plan
 {
+
 	abstract public boolean addNode(Node parent);
 	
 	//remove given node from the children list in its parent node
@@ -19,6 +20,7 @@ public abstract class Plan
 	abstract public Node getRoot();
 	
 	abstract public ArrayList<String> getList();
+
 	
 	//set data for the given node
 	public void setNodeData(Node node, String data)

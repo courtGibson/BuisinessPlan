@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class NodeTest
 {
+	
 	@Test
 	public void test()
 	{
@@ -22,6 +23,8 @@ public class NodeTest
 		assertEquals("TreeNode", tree.getName());
 		tree.setName("Tree");
 		assertEquals("Tree", tree.getName());
+		
+		tree.setData("Desciption of mission goals.");
 		assertEquals("Desciption of mission goals.", tree.getData());
 		tree.setData("Description");
 		assertEquals("Description", tree.getData());

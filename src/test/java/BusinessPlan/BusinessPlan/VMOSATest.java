@@ -20,7 +20,7 @@ public class VMOSATest
 	public void test()
 	{
 		// make a new VMOSA plan
-		Plan VMOSAPlan = new VMOSA();
+		VMOSA VMOSAPlan = new VMOSA();
 		
 		//print out strings in the list
 		for (int i = 0; i<VMOSAPlan.getList().size(); i++)
@@ -33,7 +33,9 @@ public class VMOSATest
 		// try to add vision again and check to see that it wasn't added
 		assertEquals(false, VMOSAPlan.addNode(rootNode));
 		assertEquals(false, rootNode.children.isEmpty());
+
 		//add objective, and following, nodes
+
 		Node missionNode = rootNode.children.get(0);
 		//System.out.println(missionNode.children);
 		assertEquals(true, VMOSAPlan.addNode(missionNode));
@@ -53,7 +55,7 @@ public class VMOSATest
 		Node rm2 = missionNode.children.get(0).children.get(0);
 		
 		assertEquals(false, VMOSAPlan.removeNode(rm2));
-		
+	
 		
 
 		

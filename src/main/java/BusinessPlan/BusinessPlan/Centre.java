@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class Centre extends Plan
 {
 	// probably a better way to do this but had a hard time
+
 		//  getting it to work
 		public ArrayList<String> defaultNodes = new ArrayList<String>(); 
 		public Node root;
 		//set strings for default stages VMOSA plan
+
 	private void setDefaultStrings()
 	{
 		defaultNodes.add("Mission");
