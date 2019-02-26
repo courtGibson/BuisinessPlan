@@ -11,7 +11,6 @@ import java.util.ArrayList;
  */
 public class IowaState extends Plan
 {
-	
 	// probably a better way to do this but had a hard time
 	//  getting it to work
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 

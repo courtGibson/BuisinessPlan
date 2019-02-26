@@ -13,6 +13,7 @@ import org.junit.Test;
  */
 public class CentreTest
 {
+	
 	@Test
 	public void test()
 	{

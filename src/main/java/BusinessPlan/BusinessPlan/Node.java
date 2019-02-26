@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class Node
 {
+	
 	Node parent;
 	String name;
 	String data;
