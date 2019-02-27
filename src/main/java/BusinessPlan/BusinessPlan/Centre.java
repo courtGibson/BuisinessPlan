@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Centre extends Plan
 {
-	
+		public String name;
 		public ArrayList<String> defaultNodes = new ArrayList<String>(); 
 		public Node root;
 		//set strings for default stages VMOSA plan
@@ -32,12 +32,10 @@ public class Centre extends Plan
 		root = new Node(null, defaultNodes.get(0), null, null);
 		Node newNode = new Node(root, defaultNodes.get(1), null, null);
 		root.addChild(newNode);
-		addNode(newNode);
-				
-			
+		addNode(newNode);		
 	}
 	
-	// constructor??
+	// constructor
 	public Centre()
 	{
 		defaultNodes.clear();
@@ -55,8 +53,7 @@ public class Centre extends Plan
 		// throw an exception here
 		if (parent == null)
 		{
-			System.out.println("error wrong");
-			return false;
+			throw new IllegalArgumentException("Cannot add to this parent");
 		}
 		else
 		{
@@ -80,8 +77,7 @@ public class Centre extends Plan
 				|| nodeRemove.getParent().children.size()==1)
 		{
 		
-			System.out.println("error");
-			return false;
+			throw new IllegalArgumentException("Cannot remove this node");
 		
 	    }
 		else
@@ -93,6 +89,7 @@ public class Centre extends Plan
 		}
 	}
 	
+	//Getter and setters
 	public Node getRoot()
 	{
 		return root;
@@ -101,5 +98,16 @@ public class Centre extends Plan
 	public ArrayList<String> getList()
 	{
 		return defaultNodes;
+	}
+	
+	
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 }

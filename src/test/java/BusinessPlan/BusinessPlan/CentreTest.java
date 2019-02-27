@@ -13,9 +13,11 @@ import org.junit.Test;
  */
 public class CentreTest
 {
+	
 	@Test
 	public void test()
 	{
+		try{
 		// make a new VMOSA plan
 		Plan CentrePlan = new Centre();
 		
@@ -50,7 +52,12 @@ public class CentreTest
 		
 		assertEquals(false, CentrePlan.removeNode(rm2));
 		
+
+		}catch(IllegalArgumentException e)
 		
+		{
+		  e.getMessage();
+		}
 
 		
 	}

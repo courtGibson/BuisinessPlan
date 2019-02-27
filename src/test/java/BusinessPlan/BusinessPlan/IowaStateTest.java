@@ -16,6 +16,7 @@ public class IowaStateTest
 	@Test
 	public void test()
 	{
+		try {
 		// make a new VMOSA plan
 		Plan IowaStatePlan = new VMOSA();
 		
@@ -51,7 +52,11 @@ public class IowaStateTest
 		
 		assertEquals(false, IowaStatePlan.removeNode(rm2));
 		
+		}catch(IllegalArgumentException e)
 		
+		{
+		  e.getMessage();
+		}
 
 		
 		

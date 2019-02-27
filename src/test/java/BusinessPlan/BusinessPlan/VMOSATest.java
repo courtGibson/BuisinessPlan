@@ -4,7 +4,7 @@
 package BusinessPlan.BusinessPlan;
 
 import static org.junit.Assert.*;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -19,6 +19,7 @@ public class VMOSATest
 	@Test
 	public void test()
 	{
+		try{
 		// make a new VMOSA plan
 		VMOSA VMOSAPlan = new VMOSA();
 		
@@ -27,6 +28,7 @@ public class VMOSATest
 		{
 			System.out.println(VMOSAPlan.getList().get(i));
 		}
+		
 		
 		//get root node
 		Node rootNode = VMOSAPlan.getRoot();
@@ -56,12 +58,12 @@ public class VMOSATest
 		
 		assertEquals(false, VMOSAPlan.removeNode(rm2));
 	
+		}catch(IllegalArgumentException e)
+		
+		{
+		  e.getMessage();
+		}
 
-		
-
-		
-		
-		
 	}
 	
 	public void main(String[] args)

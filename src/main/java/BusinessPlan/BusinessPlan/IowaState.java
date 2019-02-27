@@ -11,9 +11,7 @@ import java.util.ArrayList;
  */
 public class IowaState extends Plan
 {
-	
-	// probably a better way to do this but had a hard time
-	//  getting it to work
+	public String name;
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
 	public Node root;
 	//set strings for default stages VMOSA plan
@@ -60,8 +58,7 @@ public class IowaState extends Plan
 		// throw an exception here
 		if (parent.getName() == "Vision" || parent.getName() == "Mission" || parent == null)
 		{
-			System.out.println("error wrong");
-			return false;
+			throw new IllegalArgumentException("Cannot add to this parent");
 		}
 		else
 		{
@@ -85,8 +82,7 @@ public class IowaState extends Plan
 				|| nodeRemove.getParent().children.size()==1)
 		{
 		
-			System.out.println("error");
-			return false;
+			throw new IllegalArgumentException("Cannot remove this node");
 		
 	    }
 		else
@@ -98,6 +94,7 @@ public class IowaState extends Plan
 		}
 	}
 	
+	//Getter and setters
 	public Node getRoot()
 	{
 		return root;
@@ -106,5 +103,16 @@ public class IowaState extends Plan
 	public ArrayList<String> getList()
 	{
 		return defaultNodes;
+	}
+	
+	
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 }

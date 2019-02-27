@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class VMOSA extends Plan
 {
+	public String name;
 	//array of default nodes for a VMOSA plan
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
 	//root is a pointer for the first node in the VMOSA plan tree
@@ -28,8 +29,9 @@ public class VMOSA extends Plan
 	}
 	
 
-	// make nodes for all of the strings in defaultNodes
+	// make nodes for first two strings in defaultNodes
 	// Set the pointer, root, to the first node in the tree
+	// add children to newNode
 	private void addDefaultNodes()
 	{
 		root = new Node(null, defaultNodes.get(0), null, null);
@@ -54,17 +56,15 @@ public class VMOSA extends Plan
 	// addNode method from abstract Plan class
 	// if trying to add Vision or Mission and they are already there
 	// makes node and sets to parent, uses for loop to iterate through the list of names
-	public boolean addNode(Node parent)
+	public boolean addNode(Node parent) 
 	{	
 		// throw an exception here
 		if (parent.getName() == "Vision" || parent == null)
 		{
-			System.out.println("error wrong");
-			return false;
+			throw new IllegalArgumentException("Cannot add to this parent");
 		}
 		else
 		{
-		// check math
 
 			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i < defaultNodes.size(); i++)
 			{
@@ -87,8 +87,7 @@ public class VMOSA extends Plan
 
 		{
 		
-			System.out.println("error");
-			return false;
+			throw new IllegalArgumentException("Cannot remove this node");
 		
 	    }
 		else
@@ -101,6 +100,7 @@ public class VMOSA extends Plan
 		}
 	}
 	
+	//Getter and setters
 	public Node getRoot()
 	{
 		return root;
@@ -109,5 +109,16 @@ public class VMOSA extends Plan
 	public ArrayList<String> getList()
 	{
 		return defaultNodes;
+	}
+	
+	
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 }

@@ -22,13 +22,15 @@ public abstract class Plan
 	
 	abstract public ArrayList<String> getList();
 
+	abstract public String getName();
+
+	abstract public void setName(String name);
 	
 	//set data for the given node
 	public void setNodeData(Node node, String data)
 	{
 		node.setData(data);
 	}
-	
 
 	
 	
