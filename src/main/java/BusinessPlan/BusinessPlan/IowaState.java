@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class IowaState extends Plan
 {
+	
 	// name of plan, set by client
 	public String name;
 	// list of default nodes

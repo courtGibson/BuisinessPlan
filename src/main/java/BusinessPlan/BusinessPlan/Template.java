@@ -17,6 +17,7 @@ import java.util.ArrayList;
  */
 public class Template
 {
+	
 	// list of available templates
 	public ArrayList<String> templates;
 	// list of current plans

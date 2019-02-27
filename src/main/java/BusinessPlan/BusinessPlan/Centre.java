@@ -23,6 +23,7 @@ public class Centre extends Plan
 	// clears list of default nodes
 	// sets default strings in defaultNodes
 	// adds node for each string in list
+	
 	public Centre()
 	{
 		defaultNodes.clear();

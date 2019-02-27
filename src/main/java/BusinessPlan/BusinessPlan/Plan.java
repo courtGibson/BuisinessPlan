@@ -13,6 +13,10 @@ public abstract class Plan
 {
 	//abstract methods addNode, removeNode, getRoot, getList 
 	//   to be implemented in concrete classes
+	/**
+	 * @param parent
+	 * @return
+	 */
 	abstract public boolean addNode(Node parent);
 	
 	//remove given node from the children list in its parent node

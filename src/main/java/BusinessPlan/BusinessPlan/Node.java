@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author Courtney and Jack
  *
  */
+
 public class Node
 {
 	Node parent;
@@ -15,12 +16,7 @@ public class Node
 	String data;
 	ArrayList<Node> children = new ArrayList<Node>();
 	
-	/**
-	 * @param name
-	 * @param data
-	 * @param parent
-	 * @param children
-	 */
+	
 	//constructor 
 	/*public Node(String name, String data, Node parent)
 	{
@@ -31,6 +27,12 @@ public class Node
 	}*/
 	
 	//constructor is data is not known	
+	/**
+	 * @param name
+	 * @param data
+	 * @param parent
+	 * @param children
+	 */
 	public Node(Node parent, String name, String data, ArrayList<Node> child)
 	{
 		this.name = name;
@@ -54,6 +56,7 @@ public class Node
 		return name;
 	}
 
+	
 	public void setName(String name)
 	{
 		this.name = name;
@@ -73,7 +76,8 @@ public class Node
 	{
 		return parent;
 	}
-
+  
+	
 	public void setParent(Node parent)
 	{
 		this.parent = parent;
@@ -88,6 +92,9 @@ public class Node
 	//
 	
 	//add a Node child to another node
+	/**
+	 * @param child
+	 */
 	public void addChild(Node child)
 	{
 		this.children.add(child);

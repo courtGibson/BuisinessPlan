@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class VMOSA extends Plan
 {
+	
 	// name of plan, set by client
 	public String name;
 	//array of default nodes for a VMOSA plan
@@ -22,6 +23,7 @@ public class VMOSA extends Plan
 	// constructor
 	// clears default nodes so information is not duplicated
 	// sets strings in default nodes
+	
 	public VMOSA()
 	{
 		defaultNodes.clear();
