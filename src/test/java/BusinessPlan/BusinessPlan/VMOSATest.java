@@ -33,15 +33,15 @@ public class VMOSATest
 		//get root node
 		Node rootNode = VMOSAPlan.getRoot();
 		Node missionNode = rootNode.children.get(0);
-		Node objectiveNode = missionNode.children.get(0);
-		Node stratNode = objectiveNode.children.get(0);
+		Node objNode = missionNode.children.get(0);
+		Node stratNode = objNode.children.get(0);
 		Node ActNode = stratNode.children.get(0);
 		Node assessNode = ActNode.children.get(0);
 		
 		//see that all nodes were added after root
 		assertEquals("Vision", rootNode.getName());
 		assertEquals("Mission", missionNode.getName());
-		assertEquals("Objective", objectiveNode.getName());
+		assertEquals("Objective", objNode.getName());
 		assertEquals("Strategy", stratNode.getName());
 		assertEquals("Action Plan", ActNode.getName());
 		assertEquals("Assessment", assessNode.getName());

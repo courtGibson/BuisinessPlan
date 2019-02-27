@@ -28,14 +28,46 @@ public class IowaStateTest
 		
 		//get root node
 		Node rootNode = IowaStatePlan.getRoot();
+		Node m = rootNode.children.get(0);
+		Node cv = m.children.get(0);
+		Node stra = cv.children.get(0);
+		Node goal = stra.children.get(0);
+		Node obj = goal.children.get(0);
+		Node act = obj.children.get(0);
+		Node assess = act.children.get(0);
+		
+		assertEquals("Vision", rootNode.getName());
+		assertEquals("Mission", m.getName());
+		assertEquals("Core Value", cv.getName());
+		assertEquals("Strategy", stra.getName());
+		assertEquals("Goal", goal.getName());
+		assertEquals("Objective", obj.getName());
+		assertEquals("Action Plan", act.getName());
+		assertEquals("Assessment", assess.getName());
+		
 		// try to add vision again and check to see that it wasn't added
 		assertEquals(false, IowaStatePlan.addNode(rootNode));
 		assertEquals(false, rootNode.children.isEmpty());
 		//add objective, and following, nodes
 		// check if added
 		Node missionNode = rootNode.children.get(0);
+	
 		assertEquals(true, IowaStatePlan.addNode(missionNode));
 		assertEquals(2, missionNode.children.size());
+		Node cv2 = missionNode.children.get(0);
+		Node stra2 = cv2.children.get(0);
+		Node goal2 = stra2.children.get(0);
+		Node obj2 = goal2.children.get(0);
+		Node act2 = obj2.children.get(0);
+		Node assess2 = act2.children.get(0);
+		
+		assertEquals("Core Value", cv2.getName());
+		assertEquals("Strategy", stra2.getName());
+		assertEquals("Goal", goal2.getName());
+		assertEquals("Objective", obj2.getName());
+		assertEquals("Action Plan", act2.getName());
+		assertEquals("Assessment", assess2.getName());
+		
 		
 		//try to remove root and mission
 		assertEquals(false, IowaStatePlan.removeNode(rootNode));

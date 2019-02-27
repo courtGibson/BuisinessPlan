@@ -44,7 +44,10 @@ public class CentreTest
 		// try to add mission again and check to see that it wasn't added
 		assertEquals(false, CentrePlan.addNode(null));
 		assertEquals(false, rootNode.children.isEmpty());
-		//add goal, and following, nodes
+		//add goal, and following, nodes		
+		//check to see if added
+		assertEquals(true, CentrePlan.addNode(rootNode));
+		assertEquals(2, rootNode.children.size());
 		Node goalNode = rootNode.children.get(0);
 		Node learn2 = goalNode.children.get(0);
 		Node assess2 = learn2.children.get(0);
@@ -54,10 +57,6 @@ public class CentreTest
 		assertEquals("Learning Objective", learn2.getName());
 		assertEquals("Assessment Process", assess2.getName());
 		assertEquals("Results", res2.getName());
-		
-		//check to see if added
-		assertEquals(true, CentrePlan.addNode(rootNode));
-		assertEquals(2, rootNode.children.size());
 		//try to remove root
 		assertEquals(false, CentrePlan.removeNode(rootNode));
 		
