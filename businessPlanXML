@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="10.0.2" class="java.beans.XMLDecoder">
+ <object class="BusinessPlan.BusinessPlan.VMOSA" id="VMOSA0">
+  <void class="BusinessPlan.BusinessPlan.VMOSA" method="getField">
+   <string>name</string>
+   <void method="set">
+    <object idref="VMOSA0"/>
+    <string>VMOSA_2019</string>
+   </void>
+  </void>
+ </object>
+</java>
