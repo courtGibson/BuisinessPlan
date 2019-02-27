@@ -63,7 +63,7 @@ public class Template
     	}
     }
     
-    
+  
     // allows access to Plans stored in the list
     // assumes that person organizing knows which plan is which
    public Plan getPlans(ArrayList<Plan> clientPlans, int index)
