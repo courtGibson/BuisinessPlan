@@ -11,10 +11,9 @@ import java.util.ArrayList;
  */
 public class VMOSA extends Plan
 {
-	
-	// probably a better way to do this but had a hard time
-	//  getting it to work
+	//array of default nodes for a VMOSA plan
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
+	//root is a pointer for the first node in the VMOSA plan tree
 	public Node root;
 
 	//set strings for default stages VMOSA plan
@@ -30,17 +29,19 @@ public class VMOSA extends Plan
 	
 
 	// make nodes for all of the strings in defaultNodes
-	// Create pointer for tree called root
+	// Set the pointer, root, to the first node in the tree
 	private void addDefaultNodes()
 	{
-		Node first = new Node(null, defaultNodes.get(0), null, null);
-		root = first;
-		addRoot(root);
+		root = new Node(null, defaultNodes.get(0), null, null);
+		Node newNode = new Node(null, defaultNodes.get(1), null, null);
+		root.addChild(newNode);
 				
 			
 	}
 	
-	// constructor??
+	// constructor
+	// clears default nodes so information is not duplicated
+	// sets strings in default nodes
 	public VMOSA()
 	{
 		defaultNodes.clear();
@@ -48,19 +49,6 @@ public class VMOSA extends Plan
 		addDefaultNodes();
 	}
 	
-
-	private void addRoot(Node start)
-	{
-
-
-		Node newParent = new Node(start, defaultNodes.get(1), null, null);
-
-		start.addChild(newParent);
-		addNode(newParent);
-		
-		
-		
-	}
 	
 	
 	// addNode method from abstract Plan class

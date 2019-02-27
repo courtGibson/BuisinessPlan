@@ -21,7 +21,7 @@ public class Template
     }
     
     
-    // when App is made then the templates are made
+    // when templates are added when the constructor is called
     // need to be changed when there is a new plan added
     private void addTemplates()
     {

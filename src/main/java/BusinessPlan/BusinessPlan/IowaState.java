@@ -34,9 +34,10 @@ public class IowaState extends Plan
 	// Create pointer for tree called root
 	private void addDefaultNodes()
 	{
-		Node first = new Node(null, defaultNodes.get(0), null, null);
-		root = first;
-		addRoot(root);
+		root = new Node(null, defaultNodes.get(0), null, null);
+		Node newNode = new Node(root, defaultNodes.get(1), null, null);
+		root.addChild(newNode);
+		addNode(newNode);
 				
 			
 	}
@@ -49,19 +50,6 @@ public class IowaState extends Plan
 		addDefaultNodes();
 	}
 	
-
-	private void addRoot(Node start)
-	{
-
-		
-		
-		Node newParent = new Node(start, defaultNodes.get(1), null, null);
-		start.addChild(newParent);
-		addNode(newParent);
-		
-		
-		
-	}
 	
 	
 	// addNode method from abstract Plan class

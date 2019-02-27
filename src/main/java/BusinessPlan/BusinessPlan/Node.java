@@ -42,6 +42,10 @@ public class Node
 	}
 	
 	//empty constructor for XML
+	public Node()
+	{
+		this(null, "blank",  "empty", null);
+	}
 
 
 	//Getter and setters
@@ -83,14 +87,14 @@ public class Node
 	
 	//
 	
-	//add a child, a node, to another node
+	//add a Node child to another node
 	public void addChild(Node child)
 	{
 		this.children.add(child);
 	}
 	
 	
-	//remove child from a node's children list
+	//remove child node from a node's children list
 	public void removeChild(Node child)
 	{
 		this.children.remove(child);
