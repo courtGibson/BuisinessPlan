@@ -1,4 +1,4 @@
 # BuisinessPlan
 
 Link to Design Document:
-https://docs.google.com/document/d/1NvrN7xAh6bF-Mn4dgw5cXvxbo8wf1EmFWFnoDJOKrAg/edit?usp=sharing
+https://docs.google.com/document/d/1pignuCSjveu0KNFwS7NCJG_wo0hgQ_kJq-Eg4vBTrV4/edit?usp=sharing
