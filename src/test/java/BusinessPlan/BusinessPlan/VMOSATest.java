@@ -32,8 +32,8 @@ public class VMOSATest
 		
 		//get root node
 		Node rootNode = VMOSAPlan.getRoot();
-		Node missionNode = rootNode.children.get(0); 
-		Node  objectiveNode = missionNode.children.get(0);
+		Node missionNode = rootNode.children.get(0);
+		Node objectiveNode = missionNode.children.get(0);
 		Node stratNode = objectiveNode.children.get(0);
 		Node ActNode = stratNode.children.get(0);
 		Node assessNode = ActNode.children.get(0);

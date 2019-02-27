@@ -37,7 +37,7 @@ public class Centre extends Plan
 		defaultNodes.add("Mission");
 		defaultNodes.add("Goal");
 		defaultNodes.add("Learning Objective");
-		defaultNodes.add("Assement Process");
+		defaultNodes.add("Assessment Process");
 		defaultNodes.add("Results");
 	}
 	
@@ -46,9 +46,9 @@ public class Centre extends Plan
 	private void addDefaultNodes()
 	{
 		root = new Node(null, defaultNodes.get(0), null, null);
-		Node newNode = new Node(root, defaultNodes.get(1), null, null);
-		root.addChild(newNode);
-		addNode(newNode);		
+		Node newParent = new Node(root, defaultNodes.get(1), null, null);
+		root.addChild(newParent);
+		addNode(newParent);		
 	}
 	
 	

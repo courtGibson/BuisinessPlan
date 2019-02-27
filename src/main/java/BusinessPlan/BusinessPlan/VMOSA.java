@@ -49,8 +49,8 @@ public class VMOSA extends Plan
 	private void addDefaultNodes()
 	{
 		root = new Node(null, defaultNodes.get(0), null, null);
-		Node newNode = new Node(null, defaultNodes.get(1), null, null);
-		root.addChild(newNode);
+		Node newParent = new Node(null, defaultNodes.get(1), null, null);
+		root.addChild(newParent);
 				
 			
 	}
