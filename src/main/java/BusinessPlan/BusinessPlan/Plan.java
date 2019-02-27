@@ -13,13 +13,9 @@ public abstract class Plan
 {
 	//abstract methods addNode, removeNode, getRoot, getList 
 	//   to be implemented in concrete classes
-	/**
-	 * @param parent
-	 * @return
-	 */
+	
 	abstract public boolean addNode(Node parent);
 	
-	//remove given node from the children list in its parent node
 	abstract public boolean removeNode(Node Node);
 	
 	abstract public Node getRoot();
@@ -31,6 +27,13 @@ public abstract class Plan
 	abstract public void setName(String name);
 	
 	//set data for the given node
+	/**
+	 * Takes a Node node and String data
+	 * Sets data for the node
+	 * @param node node to set data for
+	 * @param data data to set in node
+	 * 
+	 */
 	public void setNodeData(Node node, String data)
 	{
 		node.setData(data);

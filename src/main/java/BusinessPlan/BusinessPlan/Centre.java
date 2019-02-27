@@ -57,16 +57,20 @@ public class Centre extends Plan
 	// cannot add to Mission since there can only be one
 	// makes node and sets to parent, uses for loop to iterate through the list of names
 //  to add the nodes that follow
+	/**
+	 * Take a Node parent and adds the required children and returns a boolean
+	 * true if added
+	 * @param parent parent of node that needs to be added
+	 * @return boolean true if added
+	 */
 	public boolean addNode(Node parent)
 	{	
-		// throw an exception here
 		if (parent == null)
 		{
 			throw new IllegalArgumentException("Cannot add to this parent");
 		}
 		else
 		{
-		// check math
 			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i < defaultNodes.size(); i++)
 			{
 			
@@ -79,9 +83,16 @@ public class Centre extends Plan
 			return true;
 		}
 	}
+	
 	// remove a node if it is allowed to be removed
 	// cannot be removed if it is the only child of its parent
 	//     or if it is the root node
+	/**
+	 * Takes a Node nodeRemove and returns a boolean
+	 * true is removed
+	 * @param nodeRemove node to be removed
+	 * @return boolean true if removed
+	 */
 	public boolean removeNode(Node nodeRemove)
 	{
 		if ((nodeRemove.getName() == root.getName()) 
@@ -101,22 +112,41 @@ public class Centre extends Plan
 	}
 	
 	//Getter and setters
+	/**
+	 * returns the root node
+	 * @return Node root node
+	 * 
+	 */
 	public Node getRoot()
 	{
 		return root;
 	}
 	
+	/**
+	 * returns a list of default node strings
+	 * @return ArrayList list of default node strings
+	 * 
+	 */
 	public ArrayList<String> getList()
 	{
 		return defaultNodes;
 	}
 	
-	
+	/**
+	 * returns a string name of the plan
+	 * @return String name of plan
+	 * 
+	 */
 	public String getName()
 	{
 		return name;
 	}
 
+	/**
+	 * takes a string name and sets plan name
+	 * @param name name to set as plan name
+	 * 
+	 */
 	public void setName(String name)
 	{
 		this.name = name;

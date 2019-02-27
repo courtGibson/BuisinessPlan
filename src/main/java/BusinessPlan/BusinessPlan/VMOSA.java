@@ -59,6 +59,12 @@ public class VMOSA extends Plan
 	// addNode method from abstract Plan class
 	// if trying to add Vision or Mission and they are already there
 	// makes node and sets to parent, uses for loop to iterate through the list of names
+	/**
+	 * Takes a Node parent and returns a boolean
+	 * True if added
+	 * @param parent parent node of node that needs to be added
+	 * @return boolean true if added
+	 */
 	public boolean addNode(Node parent) 
 	{	
 		if (parent.getName() == "Vision" || parent == null)
@@ -84,6 +90,12 @@ public class VMOSA extends Plan
 	// remove a node if it is allowed to be removed
 	// cannot be removed if it is the only child of its parent
 	//     or if it is the root node
+	/**
+	 * Takes a Node nodeRemove and returns a boolean
+	 * true if added
+	 * @param nodeRemove node to be removed
+	 * @return boolean true is removed
+	 */
 	public boolean removeNode(Node nodeRemove)
 
 	{
@@ -106,22 +118,40 @@ public class VMOSA extends Plan
 	}
 	
 	//Getter and setters
+	/**
+	 * returns the root node
+	 * @return Node root node
+	 * 
+	 */
 	public Node getRoot()
 	{
 		return root;
 	}
 	
+	/**
+	 * returns a list of default node strings
+	 * @return ArrayList list of default node strings
+	 */
 	public ArrayList<String> getList()
 	{
 		return defaultNodes;
 	}
 	
-	
+	/**
+	 * returns a String name of plan
+	 * @return String strings of plan name
+	 * 
+	 */
 	public String getName()
 	{
 		return name;
 	}
 
+	/**
+	 * Takes a String name and sets name of plan
+	 * @param name name to set as plan name
+	 * 
+	 */
 	public void setName(String name)
 	{
 		this.name = name;

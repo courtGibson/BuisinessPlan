@@ -32,15 +32,38 @@ public class VMOSATest
 		
 		//get root node
 		Node rootNode = VMOSAPlan.getRoot();
+		Node missionNode = rootNode.children.get(0); 
+		Node  objectiveNode = missionNode.children.get(0);
+		Node stratNode = objectiveNode.children.get(0);
+		Node ActNode = stratNode.children.get(0);
+		Node assessNode = ActNode.children.get(0);
+		
+		//see that all nodes were added after root
+		assertEquals("Vision", rootNode.getName());
+		assertEquals("Mission", missionNode.getName());
+		assertEquals("Objective", objectiveNode.getName());
+		assertEquals("Strategy", stratNode.getName());
+		assertEquals("Action Plan", ActNode.getName());
+		assertEquals("Assessment", assessNode.getName());
+		
 		// try to add vision again and check to see that it wasn't added
 		assertEquals(false, VMOSAPlan.addNode(rootNode));
 		assertEquals(false, rootNode.children.isEmpty());
 
 		//add objective, and following, nodes
 		// check to see if added
-		Node missionNode = rootNode.children.get(0);
+		
 		assertEquals(true, VMOSAPlan.addNode(missionNode));
 		assertEquals(2, missionNode.children.size());
+		Node obj2 = missionNode.children.get(1);
+		Node strat2 = obj2.children.get(0);
+		Node act2 = strat2.children.get(0);
+		Node assess2 = act2.children.get(0);
+		
+		assertEquals("Objective", obj2.getName());
+		assertEquals("Strategy", strat2.getName());
+		assertEquals("Action Plan", act2.getName());
+		assertEquals("Assessment", assess2.getName());
 		
 		//try to remove root node and mission node
 		assertEquals(false, VMOSAPlan.removeNode(rootNode));

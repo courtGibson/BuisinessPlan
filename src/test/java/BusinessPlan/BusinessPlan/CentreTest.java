@@ -18,7 +18,7 @@ public class CentreTest
 	public void test()
 	{
 		try{
-		// make a new VMOSA plan
+		// make a new Centre plan
 		Plan CentrePlan = new Centre();
 		
 		//print out strings in the list
@@ -29,11 +29,32 @@ public class CentreTest
 		
 		//get root node
 		Node rootNode = CentrePlan.getRoot();
-		// try to add vision again and check to see that it wasn't added
+		Node goal = rootNode.children.get(0);
+		Node learn = goal.children.get(0);
+		Node assess = learn.children.get(0);
+		Node res = assess.children.get(0);
+		
+		assertEquals("Mission", rootNode.getName());
+		assertEquals("Goal", goal.getName());
+		assertEquals("Learning Objective", learn.getName());
+		assertEquals("Assessment Process", assess.getName());
+		assertEquals("Results", res.getName());
+		
+		
+		// try to add mission again and check to see that it wasn't added
 		assertEquals(false, CentrePlan.addNode(null));
 		assertEquals(false, rootNode.children.isEmpty());
-		//add objective, and following, nodes
+		//add goal, and following, nodes
 		Node goalNode = rootNode.children.get(0);
+		Node learn2 = goalNode.children.get(0);
+		Node assess2 = learn2.children.get(0);
+		Node res2 = assess2.children.get(0);
+		
+		assertEquals("Goal", goalNode.getName());
+		assertEquals("Learning Objective", learn2.getName());
+		assertEquals("Assessment Process", assess2.getName());
+		assertEquals("Results", res2.getName());
+		
 		//check to see if added
 		assertEquals(true, CentrePlan.addNode(rootNode));
 		assertEquals(2, rootNode.children.size());

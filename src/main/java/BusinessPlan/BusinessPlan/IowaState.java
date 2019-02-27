@@ -64,6 +64,13 @@ public class IowaState extends Plan
 	// cannot add to Vision or Mission since there can only be one
 	// makes node and sets to parent, uses for loop to iterate through the list of names
 	//     to add the nodes that follow
+	
+	/**
+	 * Takes a Node parent and returns a boolean
+	 * true if added
+	 * @param parent parent of node to be added
+	 * @return boolean true if added
+	 */
 	public boolean addNode(Node parent)
 	{	
 		if (parent.getName() == "Vision" || parent == null)
@@ -89,6 +96,13 @@ public class IowaState extends Plan
 	// remove a node if it is allowed to be removed
 	// cannot be removed if it is the only child of its parent
 	//     or if it is the root node
+	/**
+	 * Takes a Node nodeRemove and returns a boolean
+	 * true if removed
+	 * @param nodeRemove node to be removed
+	 * @return boolean true if removed
+	 * 
+	 */
 	public boolean removeNode(Node nodeRemove)
 	{
 		if (nodeRemove.getName() == root.getName()
@@ -108,22 +122,43 @@ public class IowaState extends Plan
 	}
 	
 	//Getter and setters
+	/**
+	 * returns the root node
+	 * @return Node root node
+	 * 
+	 */
 	public Node getRoot()
 	{
 		return root;
 	}
 	
+	
+	/**
+	 * returns a list of strings for the default nodes
+	 * @return ArrayList list of default node strings
+	 * 
+	 */
 	public ArrayList<String> getList()
 	{
 		return defaultNodes;
 	}
 	
-	
+	/**
+	 * returns a string of the plan name
+	 * @return String plan name
+	 * 
+	 */
 	public String getName()
 	{
 		return name;
 	}
 
+	
+	/**
+	 * Takes a String name and sets the name of the plan
+	 * @param name name to set plan name as
+	 * 
+	 */
 	public void setName(String name)
 	{
 		this.name = name;

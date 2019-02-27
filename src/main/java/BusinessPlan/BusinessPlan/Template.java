@@ -24,6 +24,12 @@ public class Template
 	public ArrayList<Plan> plans;
 	
 	//constructor
+	/**
+	 * Takes a list of templates and list of plans and makes a new template
+	 * @param ArrayList templates list of template strings
+	 * @param ArrayList plans list of Plan plans
+	 * 
+	 */
     public Template(ArrayList<String> templates, ArrayList<Plan> plans)
     {
     	this.templates = templates;
@@ -56,6 +62,13 @@ public class Template
     // if template does not exist, exception is thrown
     // stores in Plans list after
     // only other place where existing code need to be changed
+    
+    /**
+     * Takes a String templateName and planTitle
+     * If the template exists, makes a new plan and set name to given name
+	 * @param templateName name of template that needs to be used
+	 * @param planTitle name to set as plan name
+	 */
     public void makePlan(String templateName, String planTitle)
     {
     	templateName = templateName.toUpperCase();
@@ -92,6 +105,14 @@ public class Template
     // allows access to Plans stored in the list
     // if there is not a plan with the given title, exception is thrown
     // assumes that person organizing knows which plan is which
+    
+    /**
+     * Takes a String title name and returns the plan with that
+     * title if there is a plan with that title name
+	 * @param titleName name of plan
+	 * @return Plan plan that has specified title
+	 * 
+	 */
    public Plan getPlan(String titleName)
     {
 	   for (int i = 0; i < plans.size(); i++)
@@ -107,6 +128,14 @@ public class Template
    
    // encodes plans to an xml file
    // know the plan you want to encode
+   
+   /**
+    * Take a Plan plan and a String fileName
+    * puts an XML file for the plan in the file given
+	 * @param plan plan to be encoded
+	 * @param fileName file to store XML
+	 * 
+	 */
 	public void encode(Plan plan, String fileName)
 	{
 		XMLEncoder encoder=null;
@@ -124,6 +153,13 @@ public class Template
 	
 	
 	// takes a fileName and returns the plan object to you
+	/**
+	 * Takes an XML file and decodes it,
+	 * returns a Plan
+	 * @param fileName XML file
+	 * @return Plan plan that was decoded
+	 * 
+	 */
 	public Plan decode(String fileName)
 	{
 		XMLDecoder decoder=null;
