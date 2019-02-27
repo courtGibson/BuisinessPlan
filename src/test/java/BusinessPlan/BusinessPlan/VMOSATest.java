@@ -37,33 +37,69 @@ public class VMOSATest
 		assertEquals(false, rootNode.children.isEmpty());
 
 		//add objective, and following, nodes
-
+		// check to see if added
 		Node missionNode = rootNode.children.get(0);
-		//System.out.println(missionNode.children);
 		assertEquals(true, VMOSAPlan.addNode(missionNode));
 		assertEquals(2, missionNode.children.size());
 		
+		//try to remove root node and mission node
 		assertEquals(false, VMOSAPlan.removeNode(rootNode));
 		assertEquals(false, VMOSAPlan.removeNode(missionNode));
 		
+		//set pointer to an objective node and remove it
+		// check to see if removed
 		Node rm = missionNode.children.get(0);
-		
 		assertEquals(true, VMOSAPlan.removeNode(rm));
 		assertEquals(1, missionNode.children.size());
 		
+		//set data of mission node and check it
 		missionNode.setData("hello");
 		assertEquals("hello", missionNode.getData());
 		
+		//try to remove a strategy node
+		// only one so is not removed
 		Node rm2 = missionNode.children.get(0).children.get(0);
-		
 		assertEquals(false, VMOSAPlan.removeNode(rm2));
 	
-		}catch(IllegalArgumentException e)
+		}
+		//catch any exceptions
+		catch(IllegalArgumentException e)
 		
 		{
 		  e.getMessage();
 		}
 
+	}
+	
+	
+	// test invalid arguments
+	@Test
+	public void invalidArguments() 
+	{
+		//make a plan and set pointer to root
+		Plan VMOSAPlan2 = new IowaState();
+		Node r = VMOSAPlan2.getRoot();
+		//try to remove root
+		try 
+		{
+			VMOSAPlan2.removeNode(r);
+		    fail( "My method didn't throw when I expected it to" );
+		} 
+		catch (IllegalArgumentException e)
+		{
+			  e.getMessage();
+		}
+		//try to add a vision node
+		try 
+		{
+			
+			VMOSAPlan2.addNode(r);
+		    fail( "My method didn't throw when I expected it to" );
+		} 
+		catch (IllegalArgumentException e)
+		{
+			  e.getMessage();
+		}
 	}
 	
 	public void main(String[] args)

@@ -11,12 +11,24 @@ import java.util.ArrayList;
  */
 public class VMOSA extends Plan
 {
+	// name of plan, set by client
 	public String name;
 	//array of default nodes for a VMOSA plan
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
 	//root is a pointer for the first node in the VMOSA plan tree
 	public Node root;
 
+	
+	// constructor
+	// clears default nodes so information is not duplicated
+	// sets strings in default nodes
+	public VMOSA()
+	{
+		defaultNodes.clear();
+		setDefaultStrings();
+		addDefaultNodes();
+	}
+	
 	//set strings for default stages VMOSA plan
 	private void setDefaultStrings()
 	{
@@ -40,25 +52,13 @@ public class VMOSA extends Plan
 				
 			
 	}
-	
-	// constructor
-	// clears default nodes so information is not duplicated
-	// sets strings in default nodes
-	public VMOSA()
-	{
-		defaultNodes.clear();
-		setDefaultStrings();
-		addDefaultNodes();
-	}
-	
-	
+
 	
 	// addNode method from abstract Plan class
 	// if trying to add Vision or Mission and they are already there
 	// makes node and sets to parent, uses for loop to iterate through the list of names
 	public boolean addNode(Node parent) 
 	{	
-		// throw an exception here
 		if (parent.getName() == "Vision" || parent == null)
 		{
 			throw new IllegalArgumentException("Cannot add to this parent");
@@ -79,11 +79,14 @@ public class VMOSA extends Plan
 		}
 	}
 	
+	// remove a node if it is allowed to be removed
+	// cannot be removed if it is the only child of its parent
+	//     or if it is the root node
 	public boolean removeNode(Node nodeRemove)
 
 	{
 		if (nodeRemove.getName() == root.getName()
-				|| nodeRemove.getParent().children.size()==1)
+				|| nodeRemove.getParent().children.size()==1 || nodeRemove==null)
 
 		{
 		

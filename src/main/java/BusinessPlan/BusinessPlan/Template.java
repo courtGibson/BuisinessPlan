@@ -17,12 +17,25 @@ import java.util.ArrayList;
  */
 public class Template
 {
+	// list of available templates
 	public ArrayList<String> templates;
+	// list of current plans
 	public ArrayList<Plan> plans;
 	
 	//constructor
+    public Template(ArrayList<String> templates, ArrayList<Plan> plans)
+    {
+    	this.templates = templates;
+    	this.plans = plans;
+
+    }
+    
+    //constructor, no parameters
     public Template()
     {
+    	this.templates = new ArrayList<String>();
+    	this.plans = new ArrayList<Plan>();
+    	templates.clear();
     	addTemplates();
     }
     
@@ -38,6 +51,8 @@ public class Template
     
     
     // uses if stmts in order to get the plan
+    // makes a plan from list of templates, sets given name to new plan's name
+    // if template does not exist, exception is thrown
     // stores in Plans list after
     // only other place where existing code need to be changed
     public void makePlan(String templateName, String planTitle)
@@ -74,8 +89,9 @@ public class Template
     
   
     // allows access to Plans stored in the list
+    // if there is not a plan with the given title, exception is thrown
     // assumes that person organizing knows which plan is which
-   public Plan getPlans(String titleName)
+   public Plan getPlan(String titleName)
     {
 	   for (int i = 0; i < plans.size(); i++)
 	   {

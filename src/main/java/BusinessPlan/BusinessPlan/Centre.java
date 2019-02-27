@@ -11,10 +11,25 @@ import java.util.ArrayList;
  */
 public class Centre extends Plan
 {
-		public String name;
-		public ArrayList<String> defaultNodes = new ArrayList<String>(); 
-		public Node root;
-		//set strings for default stages VMOSA plan
+	// name of plan, set by client
+	public String name;
+	// list of default nodes
+	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
+	//pointer to top of IowaState plan tree
+	public Node root;
+	
+	
+	// constructor
+	// clears list of default nodes
+	// sets default strings in defaultNodes
+	// adds node for each string in list
+	public Centre()
+	{
+		defaultNodes.clear();
+		setDefaultStrings();
+		addDefaultNodes();
+	}
+	//set strings for default stages Centre plan
 
 	private void setDefaultStrings()
 	{
@@ -35,19 +50,12 @@ public class Centre extends Plan
 		addNode(newNode);		
 	}
 	
-	// constructor
-	public Centre()
-	{
-		defaultNodes.clear();
-		setDefaultStrings();
-		addDefaultNodes();
-	}
-	
 	
 	
 	// addNode method from abstract Plan class
-	// if trying to add Mission and they are already there
+	// cannot add to Mission since there can only be one
 	// makes node and sets to parent, uses for loop to iterate through the list of names
+//  to add the nodes that follow
 	public boolean addNode(Node parent)
 	{	
 		// throw an exception here
@@ -70,11 +78,13 @@ public class Centre extends Plan
 			return true;
 		}
 	}
-	
+	// remove a node if it is allowed to be removed
+	// cannot be removed if it is the only child of its parent
+	//     or if it is the root node
 	public boolean removeNode(Node nodeRemove)
 	{
 		if ((nodeRemove.getName() == root.getName()) 
-				|| nodeRemove.getParent().children.size()==1)
+				|| nodeRemove.getParent().children.size()==1 || nodeRemove==null)
 		{
 		
 			throw new IllegalArgumentException("Cannot remove this node");

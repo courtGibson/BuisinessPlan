@@ -11,10 +11,25 @@ import java.util.ArrayList;
  */
 public class IowaState extends Plan
 {
+	// name of plan, set by client
 	public String name;
+	// list of default nodes
 	public ArrayList<String> defaultNodes = new ArrayList<String>(); 
+	//pointer to top of IowaState plan tree
 	public Node root;
-	//set strings for default stages VMOSA plan
+	
+	// constructor
+	// clears list of default nodes
+	// sets default strings in defaultNodes
+	// adds node for each string in list
+	public IowaState()
+	{
+		defaultNodes.clear();
+		setDefaultStrings();
+		addDefaultNodes();
+	}
+	
+	//set strings for default stages IowaState plan
 	private void setDefaultStrings()
 	{
 		defaultNodes.add("Vision");
@@ -40,29 +55,23 @@ public class IowaState extends Plan
 			
 	}
 	
-	// constructor??
-	public IowaState()
-	{
-		defaultNodes.clear();
-		setDefaultStrings();
-		addDefaultNodes();
-	}
+	
 	
 	
 	
 	// addNode method from abstract Plan class
-	// if trying to add Vision or Mission and they are already there
+	// cannot add to Vision or Mission since there can only be one
 	// makes node and sets to parent, uses for loop to iterate through the list of names
+	//     to add the nodes that follow
 	public boolean addNode(Node parent)
 	{	
-		// throw an exception here
-		if (parent.getName() == "Vision" || parent.getName() == "Mission" || parent == null)
+		if (parent.getName() == "Vision" || parent == null)
 		{
 			throw new IllegalArgumentException("Cannot add to this parent");
 		}
 		else
 		{
-		// check math
+		
 			for (int i = (defaultNodes.indexOf(parent.getName()))+1; i < defaultNodes.size(); i++)
 			{
 			
@@ -76,10 +85,13 @@ public class IowaState extends Plan
 		}
 	}
 	
+	// remove a node if it is allowed to be removed
+	// cannot be removed if it is the only child of its parent
+	//     or if it is the root node
 	public boolean removeNode(Node nodeRemove)
 	{
 		if (nodeRemove.getName() == root.getName()
-				|| nodeRemove.getParent().children.size()==1)
+				|| nodeRemove.getParent().children.size()==1 || nodeRemove==null)
 		{
 		
 			throw new IllegalArgumentException("Cannot remove this node");
