@@ -46,7 +46,7 @@ public class TemplateTest
 		}		
 	}
 	
-	//test invalid arguemts
+	//test invalid argument
 	@Test
 	public void invalidArguments() 
 	{
